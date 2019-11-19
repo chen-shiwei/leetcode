@@ -39,7 +39,7 @@ func (w words) Len() int {
 }
 
 // Less reports whether the element with
-// index i should sort before the element with index j.
+// index i should search before the element with index j.
 func (w words) Less(i, j int) bool {
 	return len(w[i]) > len(w[j])
 }

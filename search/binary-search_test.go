@@ -1,4 +1,4 @@
-package sort
+package search
 
 import "testing"
 
@@ -23,8 +23,8 @@ func TestBinarySort(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if gotI := BinarySort(tt.args.nums, tt.args.val); gotI != tt.wantI {
-				t.Errorf("BinarySort() = %v, want %v", gotI, tt.wantI)
+			if gotI := BinarySearch(tt.args.nums, tt.args.val); gotI != tt.wantI {
+				t.Errorf("BinarySearch() = %v, want %v", gotI, tt.wantI)
 			}
 		})
 	}

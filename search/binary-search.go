@@ -1,13 +1,10 @@
-package sort
+package search
 
-import "fmt"
-
-func BinarySort(nums []int, val int) (i int) {
+func BinarySearch(nums []int, val int) (i int) {
 	low, height := 0, len(nums)-1
 
 	for low < height {
 		m := (low + height) / 2
-		fmt.Println(m, low, height)
 		if nums[m] == val {
 			return m
 		}
