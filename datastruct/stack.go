@@ -31,6 +31,6 @@ func (s *stack) Push(x interface{}) {
 	return
 }
 
-func (s *stack) empty() bool {
+func (s *stack) Empty() bool {
 	return len(s.data) == 0
 }

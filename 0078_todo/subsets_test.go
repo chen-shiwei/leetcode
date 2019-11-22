@@ -1,4 +1,4 @@
-package _078
+package _078_todo
 
 import (
 	"reflect"
@@ -27,7 +27,7 @@ func TestSubsets(t *testing.T) {
 				  [1,2],
 				  []
 				]`,
-			args: args{nums: []int{1, 2, 3, 4}},
+			args: args{nums: []int{1, 2, 3}},
 			want: [][]int{{3}, {1}, {2}, {1, 2, 3}, {1, 3}, {2, 3}, {1, 2}, {}},
 		},
 	}
