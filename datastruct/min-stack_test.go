@@ -5,8 +5,7 @@ import (
 )
 
 func TestConstructor(t *testing.T) {
-	minStack := MinStack{data: NewStack()}
-
+	minStack := NewMinStack()
 	minStack.Push(-2)
 	minStack.Push(0)
 	minStack.Push(-3)

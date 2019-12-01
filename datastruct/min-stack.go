@@ -1,9 +1,15 @@
 package datastruct
 
+import "math"
+
 // MinStack 时间复杂度o(1) 空间复杂度o(1)
 type MinStack struct {
 	data *stack
 	min  int
+}
+
+func NewMinStack() MinStack {
+	return MinStack{data: NewStack(), min: math.MinInt32}
 }
 
 // 2 0 2
