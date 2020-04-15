@@ -1,32 +1,32 @@
 package datastruct
 
 type stack struct {
-	data []interface{}
+	data []int
 }
 
 func NewStack() *stack {
 	return new(stack)
 }
 
-func (s *stack) Pop() interface{} {
+func (s *stack) Pop() int {
 
 	if len(s.data) < 1 {
-		return ""
+		return 0
 	}
 	popVal := s.data[len(s.data)-1]
 	s.data = s.data[0 : len(s.data)-1]
 	return popVal
 }
 
-func (s *stack) Peek() interface{} {
+func (s *stack) Peek() int {
 	if len(s.data) < 1 {
-		return ""
+		return 0
 	}
 	popVal := s.data[len(s.data)-1]
 	return popVal
 }
 
-func (s *stack) Push(x interface{}) {
+func (s *stack) Push(x int) {
 	s.data = append(s.data, x)
 	return
 }

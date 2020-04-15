@@ -32,12 +32,15 @@ func TestLevelOrder(t *testing.T) {
 					Right: nil,
 				},
 			},
-		}}},
+		}}, want: [][]int{{3}, {9, 20}, {15, 7}}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LevelOrder(tt.args.root); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("LevelOrder() = %v, want %v", got, tt.want)
+			if got := LevelOrder1(tt.args.root); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("LevelOrder1() = %v, want %v", got, tt.want)
+			}
+			if got := LevelOrder2(tt.args.root); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("LevelOrder2() = %v, want %v", got, tt.want)
 			}
 		})
 	}
