@@ -20,7 +20,6 @@ func QuickSort(nums []int) {
 	}
 
 	QuickSort(nums[:head])
-
 	QuickSort(nums[head+1:])
 
 }
