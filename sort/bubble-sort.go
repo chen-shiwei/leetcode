@@ -27,3 +27,32 @@ func BubbleSort(nums sort.Interface, desc bool) {
 		}
 	}
 }
+
+func bubbleSort(nums sort.Interface, desc bool) {
+	l := nums.Len()
+	if l < 2 {
+		return
+	}
+
+	var isChange = false
+	for i := 0; i < l; i++ {
+		for j := 0; j < l-1-i; j++ {
+			if desc {
+				if nums.Less(j, j+1) {
+					nums.Swap(j, j+1)
+					isChange = true
+				}
+			} else {
+				if !nums.Less(j, j+1) {
+					nums.Swap(j, j+1)
+					isChange = true
+				}
+			}
+		}
+
+		if !isChange {
+			break
+		}
+	}
+
+}

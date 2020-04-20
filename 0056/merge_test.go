@@ -36,6 +36,23 @@ func TestMerge(t *testing.T) {
 			args: args{intervals: [][]int{{1, 4}, {0, 4}}},
 			want: [][]int{{0, 4}},
 		},
+		{name: `输入:[[1,4],[5,6]]
+				输出
+				[[1,4],[5,6]]`,
+			args: args{intervals: [][]int{
+				{1, 4}, {5, 6},
+			}}, want: [][]int{{1, 4}, {5, 6}},
+		},
+		{name: `[[1,4],[0,2],[3,5]]=>[[0,5]]`, args: args{intervals: [][]int{
+			{1, 4},
+			{0, 2},
+			{3, 5},
+		}}, want: [][]int{{0, 5}}},
+		{name: `[[1,4],[0,2],[3,5]]=>[[0,5]]`, args: args{intervals: [][]int{
+			{1, 4},
+			{0, 2},
+			{3, 5},
+		}}, want: [][]int{{0, 5}}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

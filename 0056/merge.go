@@ -4,28 +4,73 @@ package _056
 
 // Merge 合并区间
 func Merge(intervals [][]int) [][]int {
-
+	l := len(intervals)
+	if l < 2 {
+		return intervals
+	}
 	quickSort(intervals)
 
-	l := len(intervals)
+	var result = make([][]int, 0)
 
-	var mergedNums [][]int
-
-	var i = 0
-	for i < l {
+	for i := 0; i < l; {
 		left := intervals[i][0]
 		right := intervals[i][1]
-
 		for i < l-1 && intervals[i+1][0] <= right {
-			right = max(right, intervals[i+1][1])
+			if intervals[i+1][1] > right {
+				right = intervals[i+1][1]
+			}
 			i++
 		}
-		mergedNums = append(mergedNums, []int{left, right})
-		i++
 
+		result = append(result, []int{left, right})
+		i++
+	}
+	return result
+
+	//quickSort(intervals)
+	//
+	//l := len(intervals)
+	//
+	//var mergedNums [][]int
+	//
+	//var i = 0
+	//for i < l {
+	//	left := intervals[i][0]
+	//	right := intervals[i][1]
+	//
+	//	for i < l-1 && intervals[i+1][0] <= right {
+	//		right = max(right, intervals[i+1][1])
+	//		i++
+	//	}
+	//	mergedNums = append(mergedNums, []int{left, right})
+	//	i++
+	//
+	//}
+	//
+	//return mergedNums
+}
+
+func quickSort(intervals [][]int) {
+	l := len(intervals)
+	if l < 2 {
+		return
+	}
+	mid := intervals[0]
+	head, tail := 0, l-1
+
+	for i := 1; i <= tail; {
+		if intervals[i][0] < mid[0] {
+			intervals[i], intervals[head] = intervals[head], intervals[i]
+			i++
+			head++
+		} else {
+			intervals[i], intervals[tail] = intervals[tail], intervals[i]
+			tail--
+		}
 	}
 
-	return mergedNums
+	quickSort(intervals[:head])
+	quickSort(intervals[head+1:])
 
 }
 
@@ -50,29 +95,4 @@ func bubbleSort(nums [][]int) {
 			break
 		}
 	}
-}
-
-func quickSort(nums [][]int) {
-	l := len(nums)
-	if len(nums) < 1 {
-		return
-	}
-	mid := nums[0][0]
-
-	var head, tail = 0, l - 1
-	for i := 1; i <= tail; {
-		if nums[i][0] <= mid {
-			nums[i], nums[head] = nums[head], nums[i]
-			head++
-			i++
-		} else {
-			nums[i], nums[tail] = nums[tail], nums[i]
-			tail--
-		}
-	}
-
-	quickSort(nums[:head])
-
-	quickSort(nums[head+1:])
-
 }

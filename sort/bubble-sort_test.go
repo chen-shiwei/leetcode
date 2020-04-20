@@ -18,7 +18,8 @@ func TestBubbleSort(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			BubbleSort(tt.args.nums, tt.args.desc)
+			//BubbleSort(tt.args.nums, tt.args.desc)
+			bubbleSort(tt.args.nums, tt.args.desc)
 			t.Logf("nums:%v", tt.args.nums)
 		})
 	}

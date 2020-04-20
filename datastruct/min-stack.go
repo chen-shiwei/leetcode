@@ -29,10 +29,10 @@ func (m *MinStack) Push(v int) {
 }
 
 func (m *MinStack) Top() int {
-	if m.data.Peek().(int) < 0 {
-		return m.min + m.data.Peek().(int)
+	if m.data.Peek() < 0 {
+		return m.min + m.data.Peek()
 	} else {
-		return m.min + m.data.Peek().(int)
+		return m.min + m.data.Peek()
 	}
 }
 
@@ -41,7 +41,7 @@ func (m *MinStack) GetMin() int {
 }
 
 func (m *MinStack) Pop() {
-	top := m.data.Peek().(int)
+	top := m.data.Peek()
 	if top < 0 {
 		m.min = m.min - top
 	}
