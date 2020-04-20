@@ -1,7 +1,5 @@
 package _337
 
-import "fmt"
-
 /**
  * Definition for a binary tree node.
  * type TreeNode struct {
@@ -20,63 +18,33 @@ func rob(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
+	money := root.Val
 
-	q := NewQueue()
-	q.Push(root)
-	var (
-		top  = root.Val
-		down = 0
-	)
-
-	for !q.Empty() {
-		node := q.Pop().(*TreeNode)
-		fmt.Println(node)
-		if node.Left != nil {
-			q.Push(node.Left)
-		}
-		if node.Right != nil {
-			q.Push(node.Right)
-		}
+	if root.Left != nil {
+		money += rob(root.Left.Left) + rob(root.Left.Right)
 	}
-	return 0
-
-}
-
-type Queue struct {
-	data []interface{}
-}
-
-func NewQueue() *Queue {
-	return new(Queue)
-}
-
-func (s *Queue) Pop() interface{} {
-
-	if len(s.data) < 1 {
-		return nil
+	if root.Right != nil {
+		money += rob(root.Right.Left) + rob(root.Right.Right)
 	}
-	popVal := s.data[0]
-	s.data = s.data[1:]
-	return popVal
-}
 
-func (s *Queue) Peek() interface{} {
-	if len(s.data) < 1 {
-		return nil
+	result := money
+	if m := rob(root.Left) + rob(root.Right); m > result {
+		return m
 	}
-	popVal := s.data[0]
-	return popVal
+
+	return result
+
 }
 
-func (s *Queue) Push(x interface{}) {
-	s.data = append(s.data, x)
-	return
-}
+func dfs(node *TreeNode, depth int, depths *[]int) {
+	if node == nil {
+		return
+	}
+	if len(*depths) <= depth {
+		*depths = append(*depths, 0)
+	}
+	(*depths)[depth] += node.Val
 
-func (s *Queue) Empty() bool {
-	return len(s.data) == 0
-}
-
-func (s Queue) Len() int {
-	return len(s.data)
+	dfs(node.Left, depth+1, depths)
+	dfs(node.Right, depth+1, depths)
 }

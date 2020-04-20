@@ -43,6 +43,34 @@ func Test_rob(t *testing.T) {
 						},
 					},
 				}}, want: 7},
+		{
+			name: `[4,1,null,2,null,3]
+
+						4
+					 /   	\
+					1	   	null
+				   /  \ 	
+				 2	 null  
+				/
+			   3`,
+
+			args: args{root: &TreeNode{
+				Val: 4,
+				Left: &TreeNode{
+					Val: 1,
+					Left: &TreeNode{
+						Val: 2,
+						Left: &TreeNode{
+							Val:   3,
+							Left:  nil,
+							Right: nil,
+						},
+						Right: nil,
+					},
+					Right: nil,
+				},
+				Right: nil,
+			}}, want: 7},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
