@@ -1,14 +1,14 @@
 package datastruct
 
 type Queue struct {
-	data []int
+	data []interface{}
 }
 
 func NewQueue() *Queue {
 	return new(Queue)
 }
 
-func (s *Queue) Pop() int {
+func (s *Queue) Pop() interface{} {
 
 	if len(s.data) < 1 {
 		return 0
@@ -18,7 +18,7 @@ func (s *Queue) Pop() int {
 	return popVal
 }
 
-func (s *Queue) Peek() int {
+func (s *Queue) Peek() interface{} {
 	if len(s.data) < 1 {
 		return 0
 	}
@@ -26,7 +26,7 @@ func (s *Queue) Peek() int {
 	return popVal
 }
 
-func (s *Queue) Push(x int) {
+func (s *Queue) Push(x interface{}) {
 	s.data = append(s.data, x)
 	return
 }
