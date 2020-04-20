@@ -1,5 +1,7 @@
 package _114
 
+import "fmt"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -32,6 +34,32 @@ func flatten(root *TreeNode) {
 		pre = node
 	}
 
+	return
+}
+
+func flatten2(root *TreeNode) {
+	if root == nil {
+		return
+	}
+
+	var pre *TreeNode
+	dfs(root, pre)
+	fmt.Println(pre)
+	return
+}
+
+func dfs(root *TreeNode, pre *TreeNode) {
+	if root == nil {
+		return
+	}
+	if pre != nil {
+		pre.Right = root
+		pre.Left = nil
+	}
+	pre = root
+
+	dfs(root.Left, pre)
+	dfs(root.Right, pre)
 	return
 }
 

@@ -82,7 +82,7 @@ func Test_flatten(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			flatten(tt.args.root)
+			flatten2(tt.args.root)
 			if !reflect.DeepEqual(tt.args.root, tt.want) {
 				t.Fail()
 			}
