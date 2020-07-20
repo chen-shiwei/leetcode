@@ -1,14 +1,16 @@
 package _022
 
 func GenerateParenthesis(n int) []string {
+	if n == 0 {
+		return nil
+	}
 	var result []string
-	wordA, wordB := '{', '}'
-
-
-
-
+	dfs("", n, n, result)
+	return result
 }
 
-func helper()  {
+func dfs(curStr string, left, right int, result []string) {
+	if left == 0 && right == 0 {
 
+	}
 }
