@@ -1,25 +1,25 @@
 package sort
 
-func QuickSort(nums []int) {
-	l := len(nums)
-	if len(nums) < 1 {
+func QuickSort(a []int) {
+	l := len(a)
+	if l < 2 {
 		return
 	}
-	mid := nums[0]
 
-	var head, tail = 0, l - 1
-	for i := 1; i <= tail; {
-		if nums[i] <= mid {
-			nums[i], nums[head] = nums[head], nums[i]
-			head++
+	var left, right = 0, l - 1
+	var flag = a[0]
+	for i := 1; i <= right; {
+		if a[i] <= flag {
+			a[i], a[left] = a[left], a[i]
+			left++
 			i++
 		} else {
-			nums[i], nums[tail] = nums[tail], nums[i]
-			tail--
+			a[i], a[right] = a[right], a[i]
+			right--
 		}
 	}
 
-	QuickSort(nums[:head])
-	QuickSort(nums[head+1:])
+	QuickSort(a[:left])
+	QuickSort(a[left+1:])
 
 }
