@@ -1,4 +1,4 @@
-package 链表中的倒数第K个节点
+package FindKthToTail
 
 type ListNode struct {
 	Val  int
