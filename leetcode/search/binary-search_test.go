@@ -20,6 +20,11 @@ func TestBinarySort(t *testing.T) {
 			nums: []int{1, 2, 3, 4, 5},
 			val:  3,
 		}, wantI: 2},
+		{name: `	nums:   []int{5, 7, 7,  8, 10},
+			target: 8,`, args: args{
+			nums: []int{5, 7, 7, 8, 10},
+			val:  8,
+		}, wantI: 3},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

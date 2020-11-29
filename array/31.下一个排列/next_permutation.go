@@ -1,5 +1,7 @@
 package _1_下一个排列
 
+import "fmt"
+
 func nextPermutation(nums []int) {
 
 	l := len(nums)
@@ -14,11 +16,14 @@ func nextPermutation(nums []int) {
 		i--
 		j--
 	}
+	fmt.Println(nums[i], nums[j])
+
 	// 存在 nums[i]<nums[j]
 	if i >= 0 {
 		for nums[i] >= nums[last] {
 			last--
 		}
+		fmt.Println(nums[i], nums[last])
 		// 交换
 		nums[i], nums[last] = nums[last], nums[i]
 	}
