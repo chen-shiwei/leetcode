@@ -43,23 +43,23 @@ func check(board [][]byte, boardShadow [][]bool, x, y int, word string, wordIdx 
 		boardShadow[x][y] = true
 	}()
 	// top
-	if x-1 >= 0 {
-		return check(board, boardShadow, x-1, y, word, wordIdx+1)
+	if x-1 >= 0 && check(board, boardShadow, x-1, y, word, wordIdx+1) {
+		return true
 	}
 
 	// bottom
-	if x+1 < len(board) {
-		return check(board, boardShadow, x+1, y, word, wordIdx+1)
+	if x+1 < len(board) && check(board, boardShadow, x+1, y, word, wordIdx+1) {
+		return true
 	}
 
 	// left
-	if y-1 > 0 {
-		return check(board, boardShadow, x, y-1, word, wordIdx+1)
+	if y-1 >= 0 && check(board, boardShadow, x, y-1, word, wordIdx+1) {
+		return true
 	}
 
 	// right
-	if y+1 < len(board[0]) {
-		return check(board, boardShadow, x, y-1, word, wordIdx+1)
+	if y+1 < len(board[0]) && check(board, boardShadow, x, y-1, word, wordIdx+1) {
+		return true
 	}
 
 	return false
