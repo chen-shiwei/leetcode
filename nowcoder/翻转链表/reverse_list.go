@@ -1,7 +1,5 @@
 package 翻转链表
 
-import "sync"
-
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -14,8 +12,6 @@ type ListNode struct {
  */
 func ReverseList(pHead *ListNode) *ListNode {
 	// write code here
-
-	sync.Map{}
 
 	var (
 		cur     = pHead

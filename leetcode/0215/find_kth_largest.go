@@ -1,7 +1,8 @@
 package _215
 
 func FindKthLargest(nums []int, k int) int {
-	Qp(nums)
+	//Qp(nums)
+	qp(nums)
 	return nums[(len(nums) - k)]
 }
 
@@ -24,7 +25,27 @@ func Qp(nums []int) {
 			last--
 		}
 	}
+}
 
-	Qp(nums[:first])
-	Qp(nums[first+1:])
+func qp(nums []int) {
+	l := len(nums)
+	if l < 1 {
+		return
+	}
+
+	flag := nums[0]
+	flagIdx := 0
+	last := l - 1
+	for i := 1; i <= last; {
+		if nums[i] < flag {
+			nums[i], nums[flagIdx] = nums[flagIdx], nums[i]
+			i++
+			flagIdx++
+		} else {
+			nums[i], nums[last] = nums[last], nums[i]
+			last--
+		}
+	}
+	qp(nums[:flagIdx])
+	qp(nums[flagIdx+1:])
 }
