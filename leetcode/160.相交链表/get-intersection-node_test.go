@@ -1,4 +1,4 @@
-package _160
+package _60_相交链表
 
 import (
 	"reflect"
@@ -48,7 +48,7 @@ func TestGetIntersectionNode(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := GetIntersectionNode(tt.args.headA, tt.args.headB); !reflect.DeepEqual(got, tt.want) {
+			if got := GetIntersectionNodeWithPointer(tt.args.headA, tt.args.headB); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("GetIntersectionNode() = %v, want %v", got, tt.want)
 			}
 		})
