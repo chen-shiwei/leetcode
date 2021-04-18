@@ -4,6 +4,9 @@ import (
 	"testing"
 )
 
+//		1
+//	2			5
+//3		4				6
 func TestPrevEach(t *testing.T) {
 	type args struct {
 		root *Node
