@@ -23,6 +23,10 @@ func Test_removeElement(t *testing.T) {
 			if got := removeElement(tt.args.nums, tt.args.val); got != tt.want {
 				t.Errorf("removeElement() = %v, want %v", got, tt.want)
 			}
+
+			if got := removeElement1(tt.args.nums, tt.args.val); got != tt.want {
+				t.Errorf("removeElement1() = %v, want %v", got, tt.want)
+			}
 		})
 	}
 }
