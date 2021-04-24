@@ -20,3 +20,16 @@ func removeDuplicates(nums []int) int {
 
 	return len(nums)
 }
+func removeDuplicates1(nums []int) int {
+	l := len(nums)
+
+	// 第一个数和之前不重复,不用覆盖
+	var slow = 1
+	for quick := 1; quick < l; quick++ {
+		if nums[quick] != nums[quick-1] {
+			nums[slow] = nums[quick]
+			slow += 1
+		}
+	}
+	return slow
+}

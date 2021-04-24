@@ -1,0 +1,33 @@
+package _5_搜索插入位置
+
+import "testing"
+
+func Test_searchInsert(t *testing.T) {
+	type args struct {
+		nums   []int
+		target int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{name: `输入: [1,3,5,6], 5
+输出: 2`, args: args{
+			nums:   []int{1, 3, 5, 6},
+			target: 5,
+		}, want: 2},
+		{name: `输入: [1,3,5,6], 2
+输出: 1`, args: args{
+			nums:   []int{1, 3, 5, 6},
+			target: 2,
+		}, want: 1},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := searchInsert(tt.args.nums, tt.args.target); got != tt.want {
+				t.Errorf("searchInsert() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

@@ -1,5 +1,7 @@
 package _283
 
+import "fmt"
+
 func MoveZeroes(nums []int) {
 	var length = len(nums)
 	var i, j int
@@ -18,4 +20,20 @@ func MoveZeroes(nums []int) {
 		}
 	}
 
+}
+
+func moveZeroes(nums []int) {
+	l := len(nums)
+	var slow = 0
+	for quick := 0; quick < l; quick++ {
+		if nums[quick] != 0 {
+			nums[slow] = nums[quick]
+			slow++
+		}
+	}
+
+	for ; slow < l; slow++ {
+		nums[slow] = 0
+	}
+	fmt.Println(nums)
 }
