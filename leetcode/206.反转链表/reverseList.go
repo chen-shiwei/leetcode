@@ -15,7 +15,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func reverseList(head *ListNode) *ListNode {
+func reverseListWithStack(head *ListNode) *ListNode {
 	var s = []int{}
 
 	for cur := head; cur != nil; cur = cur.Next {
@@ -35,4 +35,41 @@ func reverseList(head *ListNode) *ListNode {
 	}
 
 	return nil
+}
+
+func reverseListWithEach(head *ListNode) *ListNode {
+	var (
+		pre *ListNode
+		cur = head
+	)
+
+	for cur != nil {
+		tmp := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = tmp
+	}
+
+	return pre
+}
+
+// 递归
+func reverseListWithRecursion(head *ListNode) *ListNode {
+
+	var reverse func(pre, cur *ListNode) *ListNode
+
+	reverse = func(pre, cur *ListNode) *ListNode {
+		if cur == nil {
+			return pre
+		}
+		tmp := cur.Next
+		cur.Next = pre
+		// 相比 each 缺少
+		// pre = cur
+		// cur = tmp
+		return reverse(cur, tmp)
+	}
+
+	return reverse(nil, head)
+
 }
