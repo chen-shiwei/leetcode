@@ -52,6 +52,7 @@ func RemoveNthFromEnd1(head *ListNode, n int) *ListNode {
 
 func RemoveNthFromEnd2(head *ListNode, n int) *ListNode {
 
+	// 防止删除头节点 做哨兵
 	newListNode := new(ListNode)
 	newListNode.Next = head
 
@@ -60,7 +61,8 @@ func RemoveNthFromEnd2(head *ListNode, n int) *ListNode {
 	var count int
 	for i != nil {
 		i = i.Next
-		if count < (n + 1) {
+		// 需要指向的是删除的上一个节点
+		if count <= (n) {
 			count++
 		} else {
 			j = j.Next
