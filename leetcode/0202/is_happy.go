@@ -1,19 +1,26 @@
 package _202
 
 func isHappy(n int) bool {
-	var slow, first = n, squareSum(n)
-	for slow != first {
-		slow = squareSum(slow)
-		first = squareSum(squareSum(first))
+	var dict = make(map[int]struct{})
+	for n != 1 {
+		sum := getSum(n)
+		if _, ok := dict[sum]; ok {
+			return false
+		} else {
+			dict[sum] = struct{}{}
+		}
+
+		n = sum
+
 	}
-	return slow == 1
+	return true
+
 }
 
-func squareSum(n int) int {
-	var sum = 0
+func getSum(n int) int {
+	var sum int
 	for n > 0 {
-		digit := n % 10
-		sum += digit * digit
+		sum += (n % 10) * (n % 10)
 		n /= 10
 	}
 	return sum
