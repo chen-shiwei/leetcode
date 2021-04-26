@@ -44,6 +44,7 @@ func TestPrevEach(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			PrevEach(tt.args.root)
+			preorderTraversal(tt.args.root)
 		})
 	}
 }
@@ -84,6 +85,7 @@ func TestInEach(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			InEach(tt.args.root)
+			inorderTraversal(tt.args.root)
 		})
 	}
 }
@@ -124,6 +126,7 @@ func TestBeforeEach(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			BeforeEach(tt.args.root)
+			postorderTraversal(tt.args.root)
 		})
 	}
 }
