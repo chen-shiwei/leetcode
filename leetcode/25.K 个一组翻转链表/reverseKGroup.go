@@ -14,26 +14,36 @@ type ListNode struct {
 }
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	var n = head
+	hair := &ListNode{Next: head}
+	pre := hair
 
-	var stack []int
-
-	var c = k
-	for cur := head; cur != nil; cur = cur.Next {
-
-		if c == 0 {
-			var l = &ListNode{}
-			for _, v := range stack {
-				l.Val = v
-				l.Next = &ListNode{}
+	for head != nil {
+		tail := pre
+		for i := 0; i < k; i++ {
+			tail = tail.Next
+			if tail == nil {
+				return hair.Next
 			}
-			stack = stack[:0]
-			c = k
-		} else {
-			stack = append([]int{cur.Val}, stack...)
-			c--
-		}
 
+		}
+		tmp := tail.Next
+		head, tail = reverseLinkedList(head, tail)
+		pre.Next = head
+		tail.Next = tmp
+		pre = tail
+		head = tail.Next
 	}
 
+	return hair.Next
+}
+
+func reverseLinkedList(head, tail *ListNode) (*ListNode, *ListNode) {
+	var pre, cur = tail.Next, head
+	for cur != nil {
+		tmp := cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = tmp
+	}
+	return tail, head
 }

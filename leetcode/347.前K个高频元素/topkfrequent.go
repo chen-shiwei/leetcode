@@ -1,5 +1,10 @@
 package _47_前K个高频元素
 
+import (
+	"container/heap"
+	"github.com/chen-shiwei/leetcode/leetcode/datastruct"
+)
+
 func topKFrequent(nums []int, k int) []int {
 	var dict = make(map[int]int)
 
@@ -42,4 +47,27 @@ func QSort(nums [][]int) {
 	QSort(nums[:left])
 	QSort(nums[left+1:])
 
+}
+
+func topKFrequentWithIHeap(nums []int, k int) []int {
+	dict := map[int]int{}
+	for _, v := range nums {
+		dict[v]++
+	}
+
+	h := &datastruct.IHeap{}
+	heap.Init(h)
+	for i, v := range dict {
+		heap.Push(h, [2]int{i, v})
+		if h.Len() > k {
+			heap.Pop(h)
+		}
+	}
+
+	result := make([]int, k)
+	for i := 0; i < k; i++ {
+		result[k-i-1] = heap.Pop(h).([2]int)[0]
+	}
+
+	return result
 }
