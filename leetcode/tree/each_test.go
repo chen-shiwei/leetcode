@@ -43,7 +43,7 @@ func TestPrevEach(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			PrevEach(tt.args.root)
+			//PrevEach(tt.args.root)
 			preorderTraversal(tt.args.root)
 		})
 	}
