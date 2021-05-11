@@ -1,4 +1,6 @@
-package _5_K_个一组翻转链表
+package _5_K个一组翻转链表
+
+import "fmt"
 
 /**
  * Definition for singly-linked list.
@@ -17,21 +19,24 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	hair := &ListNode{Next: head}
 	pre := hair
 
-	for head != nil {
-		tail := pre
+	var left, right = pre, pre
+	for left != nil {
 		for i := 0; i < k; i++ {
-			tail = tail.Next
-			if tail == nil {
+			right = right.Next
+			if right == nil {
 				return hair.Next
 			}
-
 		}
-		tmp := tail.Next
-		head, tail = reverseLinkedList(head, tail)
-		pre.Next = head
-		tail.Next = tmp
-		pre = tail
-		head = tail.Next
+		next := right.Next
+		left = left.Next
+		fmt.Println(left, right)
+		newLeft, newRight := reverseLinkedList(left, right)
+		// 修改反转的指针
+		left.Next = newLeft
+		newRight.Next = next
+		// 移动下一位处理
+		left = newRight
+		right = newRight.Next
 	}
 
 	return hair.Next
@@ -39,7 +44,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 
 func reverseLinkedList(head, tail *ListNode) (*ListNode, *ListNode) {
 	var pre, cur = tail.Next, head
-	for cur != nil {
+	for pre != tail {
 		tmp := cur.Next
 		cur.Next = pre
 		pre = cur
