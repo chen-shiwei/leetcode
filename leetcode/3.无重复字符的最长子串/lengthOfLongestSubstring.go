@@ -2,10 +2,10 @@ package __无重复字符的最长子串
 
 func lengthOfLongestSubstring(s string) int {
 	var (
-		l      = len(s)
-		dict   = make(map[uint8]int)
-		start  int
-		maxLen int
+		l    = len(s)
+		dict = make(map[uint8]int)
+		left int
+		max  int
 	)
 	if l == 0 {
 		return 0
@@ -13,19 +13,15 @@ func lengthOfLongestSubstring(s string) int {
 
 	for i := 0; i < l; i++ {
 		if idx, ok := dict[s[i]]; ok {
-			start = max(idx+1, start)
+			if idx+1 > left {
+				left = idx + 1
+			}
 		}
 		dict[s[i]] = i
-		maxLen = max(i-start+1, maxLen)
+		if i-left+1 > max {
+			max = i - left + 1
+		}
 	}
 
-	return maxLen
-}
-
-func max(a, b int) int {
-	if a >= b {
-		return a
-	}
-
-	return b
+	return max
 }
