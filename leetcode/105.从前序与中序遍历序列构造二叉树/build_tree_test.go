@@ -1,4 +1,4 @@
-package _105
+package _05_从前序与中序遍历序列构造二叉树
 
 import (
 	"reflect"
@@ -45,7 +45,7 @@ func Test_buildTree(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := buildTree(tt.args.preorder, tt.args.inorder); !reflect.DeepEqual(got, tt.want) {
+			if got := buildTree1(tt.args.preorder, tt.args.inorder); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("buildTree() = %v, want %v", got, tt.want)
 			}
 		})

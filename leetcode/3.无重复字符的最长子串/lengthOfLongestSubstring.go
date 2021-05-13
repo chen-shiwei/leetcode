@@ -11,9 +11,11 @@ func lengthOfLongestSubstring(s string) int {
 		return 0
 	}
 
+	// 滑动仓库 start->i
 	for i := 0; i < l; i++ {
 		if idx, ok := dict[s[i]]; ok {
 			if idx+1 > left {
+				// id+1 左端出队
 				left = idx + 1
 			}
 		}
