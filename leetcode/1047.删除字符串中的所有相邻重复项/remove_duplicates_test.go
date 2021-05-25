@@ -1,4 +1,4 @@
-package _047_删除字符串中的所有相邻重复项_stack_
+package _047_删除字符串中的所有相邻重复项
 
 import "testing"
 
