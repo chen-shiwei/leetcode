@@ -1,4 +1,4 @@
-package _078_todo
+package _8_子集
 
 import (
 	"reflect"
@@ -33,7 +33,7 @@ func TestSubsets(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Subsets(tt.args.nums); !reflect.DeepEqual(got, tt.want) {
+			if got := subsets(tt.args.nums); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("Subsets() = %v, want %v", got, tt.want)
 			}
 		})
