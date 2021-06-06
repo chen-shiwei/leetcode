@@ -30,7 +30,7 @@ func Test_strStr(t *testing.T) {
 		//	}
 		//})
 		t.Run(tt.name, func(t *testing.T) {
-			if got := strStrWithKMP(tt.args.haystack, tt.args.needle); got != tt.want {
+			if got := strStrWithKMP1(tt.args.haystack, tt.args.needle); got != tt.want {
 				t.Errorf("strStrWithKMP() = %v, want %v", got, tt.want)
 			}
 		})
