@@ -16,6 +16,9 @@ type TreeNode struct {
 }
 
 func minCameraCover(root *TreeNode) int {
+	// 0 无覆盖
+	// 有覆盖，有摄像头
+	// 有覆盖，无摄像头
 	var fn func(root *TreeNode) int
 	var result int
 	fn = func(root *TreeNode) int {
