@@ -1,4 +1,4 @@
-package _3_最大子序和
+package _3_最大子序和_贪心_dp
 
 import "testing"
 
@@ -17,7 +17,7 @@ func Test_maxSubArray(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := maxSubArray(tt.args.nums); got != tt.want {
+			if got := maxSubArrayWithGreedy(tt.args.nums); got != tt.want {
 				t.Errorf("maxSubArray() = %v, want %v", got, tt.want)
 			}
 		})

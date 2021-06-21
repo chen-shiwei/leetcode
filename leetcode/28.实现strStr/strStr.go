@@ -1,7 +1,5 @@
 package _8_实现strStr
 
-import "fmt"
-
 func strStr(haystack string, needle string) int {
 	l1 := len(haystack)
 	l2 := len(needle)
@@ -25,8 +23,7 @@ func strStr(haystack string, needle string) int {
 func strStrWithKMP(haystack string, needle string) int {
 	l1 := len(haystack)
 	l2 := len(needle)
-
-	next := make([]int, l2)
+	var next = make([]int, l2)
 	for i, j := 1, 0; i < l2; i++ {
 		for j > 0 && needle[i] != needle[j] {
 			j = next[j-1]
@@ -36,7 +33,7 @@ func strStrWithKMP(haystack string, needle string) int {
 		}
 		next[i] = j
 	}
-	fmt.Println(next)
+
 	for i, j := 0, 0; i < l1; i++ {
 		for j > 0 && haystack[i] != needle[j] {
 			j = next[j-1]
@@ -49,4 +46,5 @@ func strStrWithKMP(haystack string, needle string) int {
 		}
 	}
 	return -1
+
 }
